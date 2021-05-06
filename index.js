@@ -28,6 +28,7 @@ inquirer
         type: "list",
         message: "What license should your project have?",
         name: "Licenses",
+        choices: ["choice1, choice2, choice3"]
     },
     {
         type: "input",
