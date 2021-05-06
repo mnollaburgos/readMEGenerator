@@ -2,7 +2,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 // TODO: Create an array of questions for user input
-const questions = [
+inquirer
+.prompt([
     {
         type: "input",
         message: "What is your username?",
@@ -48,14 +49,20 @@ const questions = [
         message: "What does the user need to know about contributing to the repo?",
         name: "Contributions",
     }
-
+])
     
-];
-
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+.then((data) => {
+    const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
 
-}
+    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
+
+// function writeToFile(fileName, data) {
+
+// }
 
 // TODO: Create a function to initialize app
 function init() {}
